@@ -1,0 +1,10 @@
+.product {
+  display: inline-block;
+  margin: 0.4rem;
+  border: 1px solid black;
+  width: 5rem;
+}
+
+.product.dispensing {
+  border: 3px solid red;
+}

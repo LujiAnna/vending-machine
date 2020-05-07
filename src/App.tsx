@@ -3,7 +3,9 @@ import Button, { ButtonValue } from "./Button";
 import Product from "./Product";
 import Price from "./Price";
 import styles from "./App.module.css";
-import shelves from "./data.json";
+import shelves from "./data";
+import { scrollLeft } from "./utils/text";
+import clsx from "clsx";
 
 const keyPad: ButtonValue[][] = [
   ["A", "1", "2"],
@@ -37,13 +39,13 @@ function App() {
     setBalance(balance + amount);
   };
 
-  const displayMessage = (msg: string, time = 2000) => {
+  const displayMessage = async (msg: string, time = 2000) => {
     setScreen("MESSAGE");
-    setMessage(msg);
-    setTimeout(() => {
-      setMessage("");
-      setScreen("BALANCE");
-    }, time);
+
+    await scrollLeft(msg, setMessage);
+
+    setMessage("");
+    setScreen("BALANCE");
   };
 
   const dispense = (inputCode: string) => {
@@ -58,7 +60,7 @@ function App() {
       setScreen("BALANCE");
       setDispensingId(product.id);
     } else {
-      displayMessage("INSUFF");
+      displayMessage("INSUFFICIENT FUNDS");
     }
   };
 
@@ -81,37 +83,48 @@ function App() {
   return (
     <>
       <div className={styles.vendingMachine}>
-        <div className={styles.products}>
-          {shelves.map((shelf, index) => {
-            return (
-              <div className={styles.shelf} key={index}>
-                {shelf.items.map((item, i) => {
-                  return (
-                    <Product
-                      key={item.id}
-                      id={item.id}
-                      dispensingId={dispensingId}
-                      name={item.name}
-                      price={item.price}
-                      code={shelf.letter + (i + 1)}
-                    />
-                  );
-                })}
-              </div>
-            );
-          })}
+        <div>
+          <div className={styles.products}>
+            {shelves.map((shelf, index) => {
+              return (
+                <div className={styles.shelf} key={index}>
+                  {shelf.items.map((item, i) => {
+                    return (
+                      <Product
+                        key={item.id}
+                        id={item.id}
+                        dispensingId={dispensingId}
+                        name={item.name}
+                        price={item.price}
+                        imageUrl={item.imageUrl}
+                        code={shelf.letter + (i + 1)}
+                      />
+                    );
+                  })}
+                </div>
+              );
+            })}
+          </div>
+
+          <div className={styles.doorFrame}>
+            <div className={styles.door} />
+          </div>
         </div>
 
         <div className={styles.keypadContainer}>
           <div className={styles.keypad}>
-            <p className={styles.screen}>
-              {screen === "INPUT_CODE" && inputCode}
+            <div
+              className={clsx(styles.screen, {
+                [styles.scrolling]: screen === "MESSAGE",
+              })}
+            >
+              {screen === "INPUT_CODE" && <span>{inputCode}</span>}
               {screen === "BALANCE" && <Price value={balance / 100} />}
-              {screen === "MESSAGE" && message}
-            </p>
+              {screen === "MESSAGE" && <span>{message}</span>}
+            </div>
 
             {keyPad.map((keys, row) => (
-              <div key={row}>
+              <div key={row} className={styles.keyPadRow}>
                 {keys.map((key, col) => (
                   <Button key={col} value={key} onClick={handleCodeClick} />
                 ))}
@@ -121,8 +134,9 @@ function App() {
         </div>
       </div>
       <div className={styles.money}>
-        <button onClick={(e) => addMoney(100)}>Dollar</button>
-        <button onClick={(e) => addMoney(25)}>Quarter</button>
+        <button onClick={(e) => addMoney(100)}>£1</button>
+        <button onClick={(e) => addMoney(50)}>50p</button>
+        <button onClick={(e) => addMoney(10)}>10p</button>
         <button onClick={(e) => setBalance(0)}>Change</button>
       </div>
     </>

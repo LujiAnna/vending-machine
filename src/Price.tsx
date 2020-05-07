@@ -5,9 +5,9 @@ type PriceProps = {
 };
 
 export default function Price({ value }: PriceProps) {
-  const formatter = new Intl.NumberFormat("en-US", {
+  const formatter = new Intl.NumberFormat("en-GB", {
     style: "currency",
-    currency: "USD",
+    currency: "GBP",
   });
 
   return <span>{formatter.format(value)}</span>;

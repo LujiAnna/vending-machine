@@ -2,10 +2,15 @@
   display: inline-flex;
   flex-direction: column;
   width: 5rem;
+  height: 5rem;
 }
 
-.product.dispensing {
-  border: 3px solid red;
+.productImageContainer {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  width: 5rem;
+  height: 100%;
 }
 
 .productImage {

@@ -1,9 +1,6 @@
 import React from "react";
-import clsx from "clsx";
 import Price from "./Price";
 import styles from "./Product.module.css";
-import crisps from "./img/crisps.svg";
-import drink from "./img/drink-bottle.svg";
 
 type ProductProps = {
   name: string;
@@ -11,7 +8,6 @@ type ProductProps = {
   code: string;
   id: string;
   imageUrl: string;
-  dispensingId: string | null;
 };
 
 export default function Product({
@@ -20,20 +16,17 @@ export default function Product({
   code,
   id,
   imageUrl,
-  dispensingId,
 }: ProductProps) {
   return (
-    <div
-      className={clsx(styles.product, {
-        [styles.dispensing]: dispensingId === id,
-      })}
-    >
-      <div
-        className={styles.productImage}
-        style={{
-          backgroundImage: `url("${imageUrl}")`,
-        }}
-      ></div>
+    <div className={styles.product}>
+      <div className={styles.productImageContainer}>
+        <div
+          className={styles.productImage}
+          style={{
+            backgroundImage: `url("${imageUrl}")`,
+          }}
+        />
+      </div>
       <div className={styles.productDetails}>
         <Price value={price / 100} /> - {code}
       </div>

@@ -6,6 +6,8 @@ import styles from "./App.module.css";
 import shelves from "./data";
 import { scrollLeft } from "./utils/text";
 import clsx from "clsx";
+import hand from "./img/hand.svg";
+import plant from "./img/plant.png";
 
 const keyPad: ButtonValue[][] = [
   ["A", "1", "2"],
@@ -83,6 +85,7 @@ function App() {
   return (
     <>
       <div className={styles.vendingMachine}>
+        <img className={styles.plant} src={plant} />
         <div>
           <div className={styles.products}>
             {shelves.map((shelf, index) => {
@@ -93,7 +96,6 @@ function App() {
                       <Product
                         key={item.id}
                         id={item.id}
-                        dispensingId={dispensingId}
                         name={item.name}
                         price={item.price}
                         imageUrl={item.imageUrl}
@@ -108,6 +110,18 @@ function App() {
 
           <div className={styles.doorFrame}>
             <div className={styles.door} />
+          </div>
+          <img src={hand} className={styles.hand} />
+          <div className={styles.money}>
+            <button className={styles.coin1} onClick={(e) => addMoney(100)}>
+              £1
+            </button>
+            <button className={styles.coin2} onClick={(e) => addMoney(50)}>
+              50p
+            </button>
+            <button className={styles.coin3} onClick={(e) => addMoney(10)}>
+              10p
+            </button>
           </div>
         </div>
 
@@ -130,14 +144,24 @@ function App() {
                 ))}
               </div>
             ))}
+            <div className={styles.paymentContainer}>
+              <button
+                className={styles.changeButton}
+                onClick={(e) => setBalance(0)}
+              />
+              <div className={styles.coinSlot}></div>
+            </div>
           </div>
         </div>
-      </div>
-      <div className={styles.money}>
-        <button onClick={(e) => addMoney(100)}>£1</button>
-        <button onClick={(e) => addMoney(50)}>50p</button>
-        <button onClick={(e) => addMoney(10)}>10p</button>
-        <button onClick={(e) => setBalance(0)}>Change</button>
+        <div className={styles.poster}>
+          EAT.
+          <br />
+          SLEEP.
+          <br />
+          WORK.
+          <br />
+          REPEAT.
+        </div>
       </div>
     </>
   );

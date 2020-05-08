@@ -1,11 +1,7 @@
-.money {
-  margin: 5rem;
-}
-
 .vendingMachine {
   border: 1px solid black;
   display: flex;
-  margin: auto;
+  margin: auto auto 0 auto;
   padding: 2rem;
   background: rgb(0, 0, 0);
   background: linear-gradient(
@@ -13,6 +9,44 @@
     rgba(0, 0, 0, 1) 0%,
     rgba(69, 69, 69, 1) 100%
   );
+  position: relative;
+}
+
+.plant {
+  max-height: 80vh;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 998;
+  transform: translate(-110%, 0);
+}
+
+.poster {
+  position: absolute;
+  z-index: 998;
+  top: 0;
+  right: 0;
+  transform: translate(150%, 30%);
+  background-color: black;
+  color: white;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 3rem;
+  padding: 2rem;
+}
+
+.hand {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 999;
+  transform: translate(50%, 25%);
+}
+
+.money {
+  position: absolute;
+  z-index: 1000;
+  bottom: 2rem;
+  right: 0;
 }
 
 .screen {
@@ -96,7 +130,7 @@
   bottom: 0;
   left: 0;
   border-radius: 1rem;
-  z-index: 1;
+  z-index: 999;
   background: rgb(255, 255, 255);
   background: linear-gradient(
     45deg,
@@ -132,4 +166,75 @@
   );
   padding: 0.25rem;
   border-radius: 1rem;
+}
+
+.coin1 {
+  width: 3rem;
+  height: 3rem;
+  font-size: 1rem;
+  border-radius: 50%;
+  background: rgb(217, 205, 40);
+  background: linear-gradient(
+    45deg,
+    rgba(217, 205, 40, 1) 53%,
+    rgba(241, 234, 149, 1) 70%,
+    rgba(223, 208, 44, 1) 83%
+  );
+}
+
+.coin2 {
+  width: 3.8rem;
+  height: 3.8rem;
+  font-size: 1rem;
+  border-radius: 50%;
+  background: rgb(142, 142, 142);
+  background: linear-gradient(
+    45deg,
+    rgba(142, 142, 142, 1) 53%,
+    rgba(201, 201, 201, 1) 70%,
+    rgba(134, 134, 134, 1) 83%
+  );
+}
+
+.coin3 {
+  width: 3.2rem;
+  height: 3.2rem;
+  font-size: 1rem;
+  border-radius: 50%;
+  background: rgb(142, 142, 142);
+  background: linear-gradient(
+    45deg,
+    rgba(142, 142, 142, 1) 53%,
+    rgba(201, 201, 201, 1) 70%,
+    rgba(134, 134, 134, 1) 83%
+  );
+}
+
+.paymentContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.changeButton {
+  width: 3rem;
+  height: 3rem;
+  font-size: 0.5rem;
+  text-align: center;
+  border-radius: 50%;
+  background: rgb(158, 2, 2);
+  background: linear-gradient(
+    45deg,
+    rgba(158, 2, 2, 1) 53%,
+    rgba(214, 85, 85, 1) 70%,
+    rgba(158, 2, 2, 1) 83%
+  );
+}
+
+.coinSlot {
+  height: 3rem;
+  width: 0.5rem;
+  background-color: black;
+  border-radius: 0;
+  margin: 0 0.4rem;
+  display: inline-block;
 }

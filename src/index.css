@@ -5,10 +5,13 @@ body {
     sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url("./img/vending-machine-background.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: bottom;
+  /* background-image: url("./img/wood-background.jpg"); */
+  background-color: #777777;
+  background-image: url(http://www.transparenttextures.com/patterns/beige-paper.png);
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  background-repeat: repeat;
+  height: 100vh;
+  overflow: hidden;
 }
 
 @font-face {

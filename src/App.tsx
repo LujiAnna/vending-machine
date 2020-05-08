@@ -7,7 +7,7 @@ import shelves from "./data";
 import { scrollLeft } from "./utils/text";
 import clsx from "clsx";
 import hand from "./img/hand.svg";
-import plant from "./img/plant.png";
+import trash from "./img/trash.png";
 
 const keyPad: ButtonValue[][] = [
   ["A", "1", "2"],
@@ -86,7 +86,7 @@ function App() {
   return (
     <>
       <div className={styles.vendingMachine}>
-        <img className={styles.plant} src={plant} />
+        <img className={styles.trash} src={trash} />
         <div>
           <div className={styles.products} ref={productsRef}>
             {shelves.map((shelf, index) => {

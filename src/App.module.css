@@ -12,13 +12,13 @@
   position: relative;
 }
 
-.plant {
-  max-height: 80vh;
+.trash {
+  max-height: 27rem;
   position: absolute;
   bottom: 0;
   left: 0;
   z-index: 998;
-  transform: translate(-110%, 0);
+  transform: translate(-130%, 10%);
 }
 
 .poster {

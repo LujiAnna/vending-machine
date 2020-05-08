@@ -1,6 +1,8 @@
 import React from "react";
 import Price from "./Price";
 import styles from "./Product.module.css";
+import clsx from "clsx";
+import ProductAnimation from "./ProductAnimation";
 
 type ProductProps = {
   name: string;
@@ -8,6 +10,8 @@ type ProductProps = {
   code: string;
   id: string;
   imageUrl: string;
+  dispensingId: string | null;
+  containerRef: any;
 };
 
 export default function Product({
@@ -16,6 +20,8 @@ export default function Product({
   code,
   id,
   imageUrl,
+  dispensingId,
+  containerRef,
 }: ProductProps) {
   return (
     <div className={styles.product}>
@@ -26,6 +32,14 @@ export default function Product({
             backgroundImage: `url("${imageUrl}")`,
           }}
         />
+
+        {dispensingId === id && (
+          <ProductAnimation
+            className={clsx(styles.productImage, styles.dispensing)}
+            maxOffsetY={576}
+            imageUrl={imageUrl}
+          />
+        )}
       </div>
       <div className={styles.productDetails}>
         <Price value={price / 100} /> - {code}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Button, { ButtonValue } from "./Button";
 import Product from "./Product";
 import Price from "./Price";
@@ -26,6 +26,7 @@ function App() {
   const [screen, setScreen] = useState<Screen>("BALANCE");
   const [message, setMessage] = useState("");
   const [dispensingId, setDispensingId] = useState<string | null>(null);
+  const productsRef = useRef(null);
 
   const handleCodeClick = (value: ButtonValue) => {
     setScreen("INPUT_CODE");
@@ -87,7 +88,7 @@ function App() {
       <div className={styles.vendingMachine}>
         <img className={styles.plant} src={plant} />
         <div>
-          <div className={styles.products}>
+          <div className={styles.products} ref={productsRef}>
             {shelves.map((shelf, index) => {
               return (
                 <div className={styles.shelf} key={index}>
@@ -96,10 +97,12 @@ function App() {
                       <Product
                         key={item.id}
                         id={item.id}
+                        dispensingId={dispensingId}
                         name={item.name}
                         price={item.price}
                         imageUrl={item.imageUrl}
                         code={shelf.letter + (i + 1)}
+                        containerRef={productsRef}
                       />
                     );
                   })}

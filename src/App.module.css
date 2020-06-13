@@ -39,20 +39,23 @@
   bottom: 0;
   right: 0;
   z-index: 999;
-  transform: translate(50%, 25%);
+  width: 80%;
+  /* transform: translate(50%, 25%); */
+  transform: translate(0%, 25%);
 }
 
 .money {
   position: absolute;
   z-index: 1000;
-  bottom: 2rem;
-  right: 0;
+  bottom: 1rem;
+  /* bottom: 2rem; */
+  /* right: 0; */
+  right: 5rem;
 }
 
 .screen {
   position: relative;
   font-family: "digital-7 (mono)";
-  font-size: 2rem;
   text-align: right;
   height: 2rem;
   background-color: darkgreen;
@@ -92,7 +95,7 @@
 
 .keypadContainer {
   flex-shrink: 0;
-  width: 10rem;
+  width: 6rem;
 }
 
 .keypad {
@@ -143,7 +146,6 @@
 
 .shelf {
   display: flex;
-  height: 5.5rem;
   margin-bottom: 0.4rem;
 }
 
@@ -172,7 +174,6 @@
 .coin1 {
   width: 3rem;
   height: 3rem;
-  font-size: 1rem;
   border-radius: 50%;
   background: rgb(217, 205, 40);
   background: linear-gradient(
@@ -186,7 +187,6 @@
 .coin2 {
   width: 3.8rem;
   height: 3.8rem;
-  font-size: 1rem;
   border-radius: 50%;
   background: rgb(142, 142, 142);
   background: linear-gradient(
@@ -200,7 +200,6 @@
 .coin3 {
   width: 3.2rem;
   height: 3.2rem;
-  font-size: 1rem;
   border-radius: 50%;
   background: rgb(142, 142, 142);
   background: linear-gradient(
@@ -219,7 +218,6 @@
 .changeButton {
   width: 3rem;
   height: 3rem;
-  font-size: 0.5rem;
   text-align: center;
   border-radius: 50%;
   background: rgb(158, 2, 2);
@@ -238,4 +236,24 @@
   border-radius: 0;
   margin: 0 0.4rem;
   display: inline-block;
+}
+
+@media (min-width: 768px) {
+  .hand {
+    transform: translate(50%, 25%);
+    width: 100%;
+  }
+  .money {
+    bottom: 2rem;
+    right: 0;
+  }
+  .screen {
+    font-size: 2rem;
+  }
+  .keypadContainer {
+    width: 10rem;
+  }
+  .shelf {
+    height: 5.5rem;
+  }
 }

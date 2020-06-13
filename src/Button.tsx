@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Button.module.css";
+import clsx from "clsx";
 
 export type ButtonValue =
   | "A"
@@ -28,7 +29,10 @@ type ButtonProps = {
 
 export default function Button({ value, onClick }: ButtonProps) {
   return (
-    <button className={styles.button} onClick={(e) => onClick(value)}>
+    <button
+      className={clsx(styles.button, styles[value])}
+      onClick={(e) => onClick(value)}
+    >
       {value}
     </button>
   );

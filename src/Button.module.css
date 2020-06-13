@@ -1,8 +1,8 @@
 .button {
-  margin: 0.2rem;
-  padding: 0.2rem;
-  width: 2rem;
-  height: 2rem;
+  margin: 0.1rem;
+  /* font-size: 0.8rem; */
+  width: 1.5rem;
+  height: 1.5rem;
   background: rgb(42, 42, 42);
   background: radial-gradient(
     circle,
@@ -12,4 +12,21 @@
   color: white;
   border: none;
   border-radius: 50%;
+}
+
+.button.CLR {
+  font-size: 0.4rem;
+}
+
+@media (min-width: 768px) {
+  .button {
+    margin: 0.2rem;
+    padding: 0.2rem;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+  }
+  .button.CLR {
+    font-size: 0.7rem;
+  }
 }
